@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+
+  button(type="button",onclick="update()" class="btn btn-danger") press me
+  div(id="target")  clickme
+  script. 
+    var client_count=0;
+    function update() {
+      client_count++;
+      document.getElementById("target").innerHTML=`value now ${client_count}`
+    }
+  a(href="/cars") go to cars 
+
+
