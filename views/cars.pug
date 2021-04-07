@@ -1,16 +1,17 @@
 extends layout
 
 block content
-    h1= title 
-    - let cars=[{carname:"Rolls Royce",brand:"BMW",manufacturing_year:"1971"},{carname:"Lincoln",brand:"Ford",manufacturing_year:"1917"},{carname:"kia",brand:"Hyundai",manufacturing_year:"1944"}]
-    div(class="container-fluid mt-3")
-    div(class="row")
-        each car,index in cars
-            div(class="col-sm-4 bg-warning m-1 p-3" onclick=`buy(${index})`) #{car.carname} - #{car.brand} - #{car.manufacturing_year}
-    script.
-    
-      function buy(itemNo)
-      {
-        alert(`You purchased Item ${itemNo+1}`)
-      }
+  h1= title 
+  //- let cars=[{carname:"Rolls Royce",brand:"BMW",manufacturing_year:"1971"},{carname:"Lincoln",brand:"Ford",manufacturing_year:"1917"},{carname:"kia",brand:"Hyundai",manufacturing_year:"1944"}]
+  - let cars = results
+  div(class="container-fluid mt-3")
+  div(class="row")
+    each car,index in cars
+      div(class="col-sm-4 bg-warning m-1 p-3" onclick=`buy(${index})`) #{car.carname} - #{car.brand} - #{car.manufacturing_year}
+  script.
+
+    function buy(itemNo)
+    {
+      alert(`You purchased Item ${itemNo+1}`)
+    }
 
