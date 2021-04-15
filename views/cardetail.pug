@@ -3,6 +3,10 @@ extends layout
 block content
   h1= title
 
+  if (toShow == null)
+    h2 No instance to delete
+  else
+
   - let carid = toShow._id
   - let carname = toShow.carname
   - let carbrand = toShow.brand
@@ -10,13 +14,13 @@ block content
   div
     div.row
       div(class='carAttr mr-3') car ID is:
-      div #{carid}
+      div(class='carAttr') #{carid}
     div.row
       div(class='carAttr mr-3') car name is:
-      div #{carname}
+      div(class='carAttr') #{carname}
     div.row
       div(class='carAttr mr-3') car brand is:
-      div #{carbrand}
+      div(class='carAttr') #{carbrand}
     div.row
       div(class='carAttr mr-3') car manufacturing_year is:
-      div #{carmanufacturing_year}
+      div(class='carAttr') #{carmanufacturing_year}

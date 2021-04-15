@@ -11,3 +11,34 @@ a {
   width: 120px;
 }
 
+.carAttr {
+  background-color: rgb(58, 102, 197);
+  width: 200px;
+  margin: 5px;
+  text-align: center;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bolder;
+
+}
+
+.values{
+  margin-right: 2px;
+  margin-bottom: 0;
+  padding: 10px;
+  justify-content:center;
+  font-weight: bold;
+  border-bottom: 2px solid rgb(201, 255, 6);
+  border-left: 2px solid rgb(187, 255, 0);
+  background-color: rgb(229, 255, 0);
+  border-radius: 1px;
+}
+.spcl{
+    border-top: 2px solid rgb(247, 84, 92);
+    width: 40%;
+}
+.values:hover{
+  background-color: rgb(253, 221, 151);
+  color: rgb(130, 198, 238);
+}
