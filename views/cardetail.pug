@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+
+  - let carid = toShow._id
+  - let carname = toShow.carname
+  - let carbrand = toShow.brand
+  - let carmanufacturing_year = toShow.manufacturing_year
+  div
+    div.row
+      div(class='carAttr mr-3') car ID is:
+      div #{carid}
+    div.row
+      div(class='carAttr mr-3') car name is:
+      div #{carname}
+    div.row
+      div(class='carAttr mr-3') car brand is:
+      div #{carbrand}
+    div.row
+      div(class='carAttr mr-3') car manufacturing_year is:
+      div #{carmanufacturing_year}
