@@ -4,15 +4,29 @@ block content
   h1= title 
   //- let cars=[{carname:"Rolls Royce",brand:"BMW",manufacturing_year:"1971"},{carname:"Lincoln",brand:"Ford",manufacturing_year:"1917"},{carname:"kia",brand:"Hyundai",manufacturing_year:"1944"}]
   - let cars = results
+  - let destinationcreate = `dispatchCreate(\"/cars/create\")`
+
   div(class="container-fluid ")
+    button.btn( class="btn-primary ml-1 btn-lg", onclick= destinationcreate) Create
+
   div(class="row m-1")
     each car,index in cars
-     -letdestination= `dispatch(\"/cars/update?id=${car._id}\")`
-      div(class="col-sm-4 bg-warning m-1 p-3" onclick=`buy(${index})`) #{car.carname} - #{car.brand} - #{car.manufacturing_year}
-        button.btn( class="btn-primary ml-1", onclick= destination) Update
-
+      - letdestinationupdate= `dispatch(\"/cars/update?id=${car._id}\")`
+      - let destinationdetail =   `dispatch(\"/cars/detail?id=${cars._id}\")`
+      - let destinationdelete = `dispatchDelete(\"/cars/delete?id=${cars._id}\")`
+        div(class="col-sm-4 bg-warning m-1 p-3" onclick=`buy(${index})`) #{car.carname} - #{car.brand} - #{car.manufacturing_year}
+          button.btn( class="btn-light ml-1", onclick= destinationdetal) Detail
+          button.btn( class="btn-dark ml-1", onclick= destinationupdate) Update
+          button.btn( class="btn-danger ml-1", onclick= destinationdelete) Delete
   script.
     function dispatch(path){
-      window.location.href=path
+        window.location.href=path
+    }
+
+    function dispatchCreate(path){
+        window.location.href=path
+    }
+    function dispatchDelete(path){
+        window.location.href=path
     }
 

@@ -2,17 +2,19 @@ extends layout
 
 block content
   h1= title
+    div#err(style:{display:block;}) 
+
 
   form(id='carForm', action="/resource/resource/cars", method="POST")
     div.form-group
-        label.carAttr(for='carname') car name
-        input#cartype(type='text', name='carname')
+      label.carAttr(for='carname') car name
+      input#cartype(type='text', name='carname')
     div.form-group
-        label.carAttr(for='brand') car brand
-        input#size(type='text', name='brand')
+      label.carAttr(for='brand') car brand
+      input#size(type='text', name='brand')
     div.form-group
-        label.carAttr(for='manufacturing_year') car manufacturing year
-        input#cost(type='number', name='manufacturing_year')
+      label.carAttr(for='manufacturing_year') car manufacturing year
+      input#cost(type='number', name='manufacturing_year')
     input(type="submit")
 
   script.
@@ -23,12 +25,22 @@ block content
         method: 'POST',
         body: new URLSearchParams(new FormData(event.target)) // event.target is the form
       }).then((resp) => {
+        document.getElementById("err").style.display="block"
+
         return resp.json(); // or resp.text() or whatever the server sends
       }).then((body) => {
-        alert("Save succeded")
+        if(body.name){
+          document.getElementById("err").innerHTML=`${body.name}  \n ${body.message}\n`;
+          alert("Save Failed")
+        }else{
+          alert("Save succeded")
+        }
+
         // TODO handle body
       }).catch((error) => {
         // TODO handle error
+        //- document.getElementById("errors").style.display="block"
+
         alert("Save failed " + error )
       });
     });

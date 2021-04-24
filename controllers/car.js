@@ -1,6 +1,10 @@
 var car = require('../models/car');
 // List of all cars
 exports.car_list = async function(req, res) {
+    res.send('NOT IMPLEMENTED: palace list');
+};
+// List of all palaces
+exports.palace_list = async function(req, res) {
     try{
         thecars = await car.find();
         res.send(thecars);
@@ -39,14 +43,22 @@ exports.car_create_post = async function(req, res) {
     res.send(result);
     }
     catch(err){
-        res.status(500);
-        res.send(`{"error": ${err}}`);
-    }
+        res.send(err)
+        rres.status(500)
+        }
+        };
     
-};
-// Handle car delete form on DELETE.
-exports.car_delete = function(req, res) {
-res.send('NOT IMPLEMENTED: car delete DELETE ' + req.params.id);
+// Handle Car delete on DELETE.
+exports.car_delete = async function(req, res) {
+    console.log("delete "  + req.params.id)
+    try {
+        result = await car.findByIdAndDelete( req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+    }
 };
 // Handle car update form on PUT.
 exports.car_update_put = async function(req, res) {
@@ -77,18 +89,7 @@ exports.car_view_all_Page = async function(req, res) {
         res.status(500);
         res.send(`{"error": ${err}}`);    }
     };
-    // Handle Car delete on DELETE.
-exports.car_delete = async function(req, res) {
-    console.log("delete "  + req.params.id)
-    try {
-        result = await car.findByIdAndDelete( req.params.id)
-        console.log("Removed " + result)
-        res.send(result)
-    } catch (err) {
-        res.status(500)
-        res.send(`{"error": Error deleting ${err}}`);
-    }
-};
+    
 // Handle a show one view with id specified by query
 exports.car_view_one_Page = async function(req, res) {
     console.log("single view for id "  + req.query.id)
