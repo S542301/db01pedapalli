@@ -18,7 +18,7 @@ var starsRouter = require('./routes/stars');
 var slotRouter = require('./routes/slot');
 var resourceRouter = require('./routes/resource');
 var Account = require('./models/account');
-var palace = require("./models/palace");
+var car = require("./models/car");
 
 var app = express();
 

@@ -1,17 +1,11 @@
 extends layout
-
 block content
-  h1= title
-  p Welcome to #{title}
-
-  button(type="button",onclick="update()" class="btn btn-danger") press me
-  div(id="target")  clickme
-  script. 
-    var client_count=0;
-    function update() {
-      client_count++;
-      document.getElementById("target").innerHTML=`value now ${client_count}`
-    }
-  a(href="/cars") go to cars 
-
-
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/cars") Take me to cars
+    br
+    a(href="/logout") Logout
