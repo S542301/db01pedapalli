@@ -45,7 +45,7 @@ passport.use(new LocalStrategy(
     });
   }));
 
-  
+
 app.use(require('express-session')({
   secret: 'keyboard cat',
   resave: false,
@@ -103,7 +103,8 @@ async function recreateDB() {
   // Delete everything
   await car.deleteMany();
   let instance1 = new car({
-    carname: "Rolls Royce", brand: 'BMW',
+    carname: "Rolls Royce",
+    brand: 'BMW',
     manufacturing_year: 1971
   });
   instance1.save(function (err, doc) {
@@ -112,7 +113,8 @@ async function recreateDB() {
   });
 
   let instance2 = new car({
-    carname: "Lincoln", brand: 'Ford',
+    carname: "Lincoln", 
+    brand: 'Ford',
     manufacturing_year: 1917
   });
   instance2.save(function (err, doc) {
@@ -120,7 +122,8 @@ async function recreateDB() {
     console.log("Second object saved")
   });
   let instance3 = new car({
-    carname: "kia", brand: 'Hyundai',
+    carname: "kia", 
+    brand: 'Hyundai',
     manufacturing_year: 1944
   });
   instance3.save(function (err, doc) {
